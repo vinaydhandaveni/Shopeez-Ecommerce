@@ -1,0 +1,39 @@
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<ngb-carousel >
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img [src]="'https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074076.jpg?w=826&t=st=1686547053~exp=1686547653~hmac=4662cd82478ebff27b01da9a573869804367e82d1ac34188ac429ddb86e755a9'" alt="Random first slide" />
+		</div>
+		<div class="carousel-caption caption-1">
+			<h3>Signup for free and get instant access to get a world of curated products & unbeatable prices</h3>
+            <button routerLink="/signup">Signup</button>
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img [src]="'https://img.freepik.com/free-photo/red-shopping-bag-table_23-2147957585.jpg?w=740&t=st=1686292919~exp=1686293519~hmac=845b8355204897f215db5466e65f38673d3d288b785951b69408d0d27b6402fd'" alt="Random second slide" />
+		</div>
+		<div class="carousel-caption caption-2">
+			<h3>Join our community of happy shoppers.</h3><h3>Login to start exploring</h3>
+            <button routerLink="/login">Login</button>
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img [src]="'https://img.freepik.com/premium-photo/shopping-bags-yellow-background_202497-1021.jpg?w=740'" alt="Random third slide" />
+		</div>
+		<div class="carousel-caption caption-3 ">
+			<h3> No account?</h3><h3>No problem!</h3><p> Explore our website, add items to your cart, and complete your purchase.</p>
+            <button routerLink="/products">Continue</button>
+		</div>
+	</ng-template>
+</ngb-carousel>
+</body>
+  

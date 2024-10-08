@@ -1,0 +1,44 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@500&display=swap" rel="stylesheet">
+<div *ngIf="product" class="popup">
+    
+    <div class="popup-content">
+        <div class="image">
+            <img id="main" [src]="product.productImageUrl" />
+        </div>
+        
+        <div class="details">
+            <h1><b>{{ product.productName }}</b></h1>
+            <h2>₹{{ product.productPrice }}</h2>
+            <ng-container *ngIf="product.productTag === 'Books and media'">
+                <div [class.expanded]="isDescriptionExpanded">
+                  <div [class.collapsed]="!isDescriptionExpanded">
+                    <p *ngIf="!isDescriptionExpanded" >{{ getLimitedDescription(product.productDescription) }}<br /><span><small><button class='view'*ngIf="!isDescriptionExpanded" (click)="expandDescription()">View More</button></small></span></p>
+
+                  </div>
+                  <div *ngIf="isDescriptionExpanded">
+                    <p>{{ product.productDescription }}</p>
+                   <small> <button class='view' (click)="expandDescription()">View Less</button></small>
+                  </div>
+                </div>
+              </ng-container>
+            <p *ngIf="product.productTag!='Books and media'" class="description"><b>Description:</b>
+                    <p *ngFor="let property of description | keyvalue" class="description">
+                        <strong>{{ property.key }}:</strong> {{ property.value }}
+                      </p>
+              
+            <p><strong>Rating:</strong> {{ product.productRating }}</p>
+            <div class="status">
+            
+            <img src="../../../assets/check5.svg" />
+            <p class="stat">{{ product.productStatus }}</p>
+            </div>
+            <div>
+                <button class="add"(click)="addItem(product)">Add to Cart</button>
+            </div>
+        </div>
+      
+    </div>
+
+</div>

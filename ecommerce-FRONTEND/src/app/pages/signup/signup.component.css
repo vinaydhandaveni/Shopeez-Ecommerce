@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    
+}
+.left{
+   
+    width:40vw;
+    
+    margin:3rem 0 0 0;
+    
+}
+.card{
+  
+    width:60vw;
+    border: 0px solid rgba(0, 0, 0, 0.3);
+    padding:3rem;
+    margin:40px 0 20px 7rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Lato', sans-serif;
+}
+
+input{
+border:none;
+background-color: #FFEDE1;
+border-radius: 1rem;
+
+}
+
+button{
+    margin: 0.5rem;
+    background-color: #F47458;
+    border-radius: 70px;
+    border:none;
+    align-self: center;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 10s ease-in-out;
+  }
+  
+ 
+.fade-in img{
+    object-fit: contain;
+}
+
+.Links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

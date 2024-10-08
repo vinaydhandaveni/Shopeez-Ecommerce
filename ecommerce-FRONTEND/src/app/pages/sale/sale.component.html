@@ -1,0 +1,62 @@
+<div *ngIf="cartProducts.length==0?false:true" class="row">
+    <div class="col-12">
+        <div class="CartContainer">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="header"><strong>Cart Items</strong></h3>
+              </div> 
+            </div>
+          <div class="flex">
+            <div class="Cartproducts">
+            <div class="row pt-1 cart" *ngFor="let cart of cartProducts"> 
+              <div class="col-3">
+                <img class="img-fluid" style="height: 100px;width:100px" [src]="cart.productImageUrl" class="card-img-top">
+              </div>
+              <div class="col-3">
+                {{cart.productName}}
+              </div>
+              <div class="col-2">
+                <div class="quantity">
+                  <button (click)="update(cart, -1)" class="btn btn-sm btn-secondary">-</button>
+                  <span>{{ cart.Quantity }}</span>
+                  <button (click)="update(cart, 1)" class="btn btn-sm btn-secondary">+</button>
+                  </div>
+              
+              </div>
+              <div *ngIf='cart.Quantity==1?true:false'class="col-2 text-end">
+                ₹{{ cart.productPrice}}
+              </div>
+              <div *ngIf='cart.Quantity!=1?true:false'class="col-2 text-end">
+                ₹{{ cart.TotalPrice}}
+               </div>
+              <div class="col-2 text-end">
+                <button *ngIf="isLoggedin" class="btn btn-sm btn-danger" (click)="remove(cart.id)">Remove</button>
+                <button *ngIf="!isLoggedin" class="btn btn-sm btn-danger" (click)="removeLocal(cart.productId)">Remove</button>
+               </div>
+            </div>
+            </div>
+          <div class="flex-2">
+            <div class="detail">
+            <div class="summary">
+             <h3> Count : {{cartProducts.length}} items</h3>
+             <h3> SubTotal : ₹{{subTotal}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-lg btn-success" (click)="makeSale()"> Make Sale</button>
+                </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          </div>
+    </div>
+</div>
+<div class="empty" *ngIf="cartProducts.length==0?true:false">
+  <img class="emptycart" src="../../../assets/emptycart.svg">
+  <div class="det">
+    <p  class="tag">Your Cart is <span class="emptytag"><b>Empty!</b></span></p>
+    <p class="statement">Must add items to the cart before you checkout</p>
+    <button class="button" routerLink="/products"><img class="icon" src="../../../assets/shopping.svg"/> <b> Return to Shop</b></button>
+  </div>
+</div>

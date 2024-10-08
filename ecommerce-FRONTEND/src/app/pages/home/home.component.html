@@ -1,0 +1,149 @@
+
+<div [class.main]="showCheckboxes">
+
+    <div class="checkboxes" *ngIf="showCheckboxes">
+        <div>
+        <p><strong>Select Your Choice</strong></p><br/>
+        <input type="checkbox" id="priceOption1" [(ngModel)]="selectedPriceRanges1"
+            (change)="filterProducts()">
+        <label for="priceOption1">&nbsp;&nbsp;₹0 - ₹300</label><br/>
+        </div>
+        <div>
+        <input type="checkbox" id="priceOption2" [(ngModel)]="selectedPriceRanges2"
+            (change)="filterProducts()">
+        <label for="priceOption2">&nbsp;&nbsp;₹300 - ₹900</label><br/>
+        </div>
+        <div>
+        <input type="checkbox" id="priceOption3" [(ngModel)]="selectedPriceRanges3"
+            (change)="filterProducts()">
+        <label for="priceOption2">&nbsp;&nbsp;₹900-₹2000</label><br/>
+        </div>
+        <div>
+        <input type="checkbox" id="priceOption4" [(ngModel)]="selectedPriceRanges4"
+            (change)="filterProducts()">
+        <label for="priceOption2">&nbsp;&nbsp;>₹2000</label>
+        </div>
+      
+    </div>
+
+
+<section id="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="productHeading text-center">
+                    <h2 class="mb-3">Exclusive Products</h2>
+                    <div class="change">
+                    <div class="filter">
+                        <button class="filterButton"(click)="toggleFilter()">Filter <img style="height:20px;width:20px"src="../../../assets/filter.svg"></button>
+
+                       
+                    </div>
+                    <div class="text-end">
+                        Sort By
+                        <select (change)="onOptionSelected()" [(ngModel)]="selectedOption">
+                            <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                        </select>
+                    </div>
+                    </div>
+                    <ul class="list-unstyled d-flex justify-content-center" style="color:black">
+                        <li><a (click)="searchtag('all')"
+                                [ngClass]="{'text-black': activeTag === 'all' || activeTag===''}"
+                                class="m-4 text-decoration-none fw-semibold" style="cursor:pointer"value="">New Arrival</a></li>
+                        <li><a (click)="searchtag('Fashion')" [ngClass]="{'text-black': activeTag === 'Fashion'}"
+                                class="m-4 text-decoration-none fw-semibold" style="cursor:pointer" value="Fashion"><img class="icons"
+                                    src="../../../assets/fashio.png"></a></li>
+                        <li><a (click)="searchtag('Books and media')"
+                                [ngClass]="{'text-black': activeTag === 'Books and media'}"
+                                class="m-4 text-decoration-none fw-semibold" style="cursor:pointer" value="Books and Media"><img class="icons"
+                                    src="../../../assets/books.png"></a></li>
+                        <li><a (click)="searchtag('Electronics')"
+                                [ngClass]="{'text-black': activeTag === 'Electronics'}"
+                                class="m-4 text-decoration-none fw-semibold" style="cursor:pointer" value="Electronics"><img class="icons"
+                                    src="../../../assets/electronics.png"></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div *ngIf="prodlist.length==0?false:true" class="col-12">
+                <div class="row mt-3">
+                    <div class="col-lg-3 pt-1" *ngFor="let product of prodlist">
+                        <div class="box-shadow">
+                            <ng-container>
+                                <div class="card">
+                                    <img class="img-fluid" style="height: 200px;" [src]="product.productImageUrl"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{product.productName}}</h5>
+                                        <p class="card-text"><span
+                                                class="text-danger fw-semibold me-2">₹{{product.productPrice}}</span><del>
+                                                ₹{{product.productPrice}}</del>
+                                            <span class="text-success ms-2">0% Off</span>
+                                        </p>
+
+                                        <div class="row-rating">
+
+
+
+                                            <strong>
+                                                <div class="stars">
+                                                    <div class="star-rating"
+                                                        [ngClass]="{'empty-star-rating': product.productRating < 1}">
+                                                    </div>
+
+                                                    <div class="star-rating"
+                                                        [ngClass]="{'empty-star-rating': product.productRating < 2}">
+                                                    </div>
+
+                                                    <div class="star-rating"
+                                                        [ngClass]="{'empty-star-rating':product.productRating< 3}">
+                                                    </div>
+
+                                                    <div class="star-rating"
+                                                        [ngClass]="{'empty-star-rating': product.productRating < 4}">
+                                                    </div>
+
+                                                    <div class="star-rating"
+                                                        [ngClass]="{'empty-star-rating': product.productRating < 5}">
+                                                    </div>
+
+                                                    <!-- <span style="font-size: 1rem;"> ({{ product.productRating | number: '1.1-1' }})</span>-->
+
+                                                </div>
+                                            </strong>
+
+                                        </div>
+                                        <div class="row">
+                                            <div id="button">
+                                                <button  class=" btn-sm btn-lightpink btton" style="border:none"
+                                                    (click)="showproduct(product.productId)"><img style="height: 15px;width:15px;" src="../../../assets/Info-Button.svg"> View More</button>
+                                                        
+                                                <button  class="btn-sm btn-lightpink btton" style="border:none" (click)="addItem(product)"><img style="height: 15px;width:15px;"src="../../../assets/cartbutton.svg"> Add To Cart</button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="prodlist.length==0?true:false" class="page">
+                
+                    <img class="sorry"src="../../../assets/sorry.svg" >
+                
+                <div class="noprod">
+                    <h1><b>No Products Found</b></h1>
+                    <h2>Your search did not match any products</h2>
+                                     <p>Please try again</p>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</div>

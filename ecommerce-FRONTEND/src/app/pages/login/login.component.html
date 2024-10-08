@@ -1,0 +1,54 @@
+<!---
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                
+                <form #login="ngForm" (ngSubmit)="userlogin(login.value)">
+                    <div class="text-center">
+                        <h1>Login</h1>
+                        <h6>Please enter details to continue</h6>
+                    </div>
+                    <label>Email</label><br/>
+                    <input type="text" name="email" ngModel><br/><br/>
+                    <label>Password</label><br/>
+                    <input type="password" name="password" ngModel><br/><br/>
+                    <button type="submit">Login</button>
+                    
+                </form>
+                <a routerLink="/signup" style="color:aliceblue">New User? Signup</a>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica&family=Lato:wght@300&display=swap" rel="stylesheet">
+<div class="page">
+    <div class="form">
+        <div class="item1">
+            <form class="example form" #login="ngForm" (ngSubmit)="userlogin(login.value)">
+                <h1>Welcome Back</h1>
+                <h3>Please enter details to continue</h3>
+                <div class="details">
+                    <label>Email</label><br />
+                    <input type="text" name="email" ngModel placeholder="abc@gmail.com"><br /><br />
+                    <label>Password</label><br />
+                    <input type="password" name="password" ngModel placeholder="******"><br /><br />
+                </div>
+                <div class="buttoncontainer">
+                    <button type="submit" style="color:black">Login</button>
+                </div>
+            </form>
+            <div class="Links">
+                <a routerLink="/signup" style="color:black">Don't have an account? Signup</a>
+                <a routerLink="/products"><img src="../../../assets/skip_shade.png" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="animation">
+        <div class="component"><img src="../../../assets/img2.png"></div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<link href="https://fonts.googleapis.com/css2?family=Geologica&family=Lato:wght@300&display=swap" rel="stylesheet">
+<div class="container">
+  <div class="left" ngTransition>
+
+    <div *ngIf="!nameInput.value && !mobileInput.value && !emailInput.value && !passwordInput.value" class="fade-in">
+      <img src="../../../assets/basestep.svg" />
+    </div>
+    <div *ngIf="(xor(!!nameInput.value,!!mobileInput.value, !!emailInput.value,!!passwordInput.value))" class="fade-in">
+      <img src="../../../assets/step1main.svg" />
+    </div>
+    <div *ngIf="nameInput.value && mobileInput.value && emailInput.value && passwordInput.value" class="fade-in">
+      <img src="../../../assets/step2main.svg" />
+    </div>
+
+
+  </div>
+  <div class="card">
+    <div class="text-center">
+      <h1>Signup</h1>
+      <h3>Register Yourself</h3>
+    </div>
+    <form>
+      <form [formGroup]="signupForm" (ngSubmit)="signUp()" name="myForm">
+        <div class="form-group" name="namediv">
+          <label for="exampleInputPassword1">Full Name</label>
+          <input type="text" name="username" formControlName="username" class="form-control" placeholder="name" #nameInput>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">MobileNumber</label>
+          <input type="number" name="mobile" formControlName="mobile" class="form-control" placeholder="MobileNumber"
+            #mobileInput>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" id="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="Email" #emailInput>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control"
+            id="exampleInputPassword1" placeholder="********" #passwordInput>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </form>
+    <div class="Links">
+      <a routerLink="/login" style="color:black">Already have an account? Login</a>
+      <a routerLink="/products"><img src="../../../assets/skip_shade.png" /></a>
+    </div>
+  </div>
+
+
+</div>
